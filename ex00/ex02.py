@@ -2,7 +2,7 @@ name_input = input("Informe seu nome: ")
 age_input = input("Informe sua idade: ")
 name_validated = name_input.split() and name_input.isalpha()
 
-if name_validated and age_input.isnumeric():
+if name_validated and age_input.isdigit():
     age = int(age_input)
     name_length = len(name_input)
     name_inverted = name_input[-1:: -1]

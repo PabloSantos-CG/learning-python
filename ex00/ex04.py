@@ -17,7 +17,7 @@ while True:
     \n\n{"-"*50}')
 
     letter = input("Informe uma letra: ").upper()
-    if letter.isalpha():
+    if letter.isalpha() and len(letter) == 1:
         if letter in word_encripted:
             print("Letra repetida, tente novamente.")
             word_erros += 1
@@ -29,8 +29,8 @@ while True:
                 else:
                     aux += word_encripted[i]
             word_encripted = aux
-            
-            print("\nParabéns! Você acertou. \o/ \o/ \o/ \o/")
+
+            print("\nParabéns! Você acertou.")
         else:
             word_erros+=1
     else:

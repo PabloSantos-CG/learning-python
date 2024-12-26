@@ -4,6 +4,8 @@ try:
 
     if len(CPF) != 11:
         print("O CPF deve conter 11 dígitos válidos.")
+    elif CPF == (CPF[0] * len(CPF)):
+        print("Você enviou dítigos repetidos, este CPF é inválido!")
     else:
         first_factor = 10
         last_factor = 11

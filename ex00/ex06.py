@@ -26,7 +26,10 @@ try:
         first_digit = first_accumulator if first_accumulator <= 9 else 0
         last_digit = last_accumulator if last_accumulator <= 9 else 0
 
-        print(first_digit, last_digit)
+        if first_digit == int(CPF[-2]) and last_digit == int(CPF[-1]):
+            print("O CPF é Válido!")
+        else:
+            print("O CPF que você informou é inválido.")
 
 except ValueError:
-    print("Os dígitos do cpf devem ser valores numéricos.", ValueError)
+    print("Os dígitos do cpf devem ser valores numéricos.")

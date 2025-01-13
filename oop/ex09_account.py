@@ -1,17 +1,6 @@
-#conta
-"""
-conta-corrente / conta-poupança
-- conta herda de banco
-    ContaCorrente deve ter um limite extra
-    Contas têm agência, número da conta e saldo
-    Contas devem ter método para depósito
-    Conta (super classe) deve ter o método sacar abstrato (Abstração e
-    polimorfismo - as subclasses que implementam o método sacar)
-"""
 from abc import ABC, abstractmethod
 from enum import Enum
 
-data_mock = ('0332', '09800-2')
 
 class CasesWhenCheckingBalance(Enum):
     INVALID_TYPE = (False, 'Tipo inválido')
@@ -28,18 +17,24 @@ class Account(ABC):
         self._balance = 0
 
     @property
+    def number_account(self):
+        return self._number_account
+
+    @property
     def balance(self):
         return self._balance
 
     def deposit(self, value):
         if isinstance(value, (int, float)):
             self._balance += value
+            return (True, f'Você depositou: R$ {value:.2f}')
+        return (False, 'Tipo inválido')
 
     @abstractmethod
     def withdraw(self, value: int | float):
         ...
 
-    def validate_withdrawal_amount(self, value: int | float, balance_plus_limit= None):
+    def _validate_withdrawal_amount(self, value: int | float, balance_plus_limit= None):
         if not isinstance(value, (int, float)):
             return CasesWhenCheckingBalance.INVALID_TYPE.value
 
@@ -69,11 +64,17 @@ class Account(ABC):
 
 
 class SavingsAccount(Account):
+    __label = "poupança"
+
     def __init__(self, agency, number_account):
         super().__init__(agency, number_account)
 
+    @property
+    def label(self):
+        return self.__label
+
     def withdraw(self, value):
-        checked = self.validate_withdrawal_amount(value)
+        checked = self._validate_withdrawal_amount(value)
 
         if not checked[0]:
             return checked
@@ -81,18 +82,22 @@ class SavingsAccount(Account):
         print(f'Você sacou: R$ -{value:.2f}')
         return checked
 
-# mock_ = SavingsAccount(*data_mock)
-# print(mock_)
 
 class CheckingAccount(Account):
+    __label = "conta-corrente"
+
     def __init__(self, agency, number_account):
         super().__init__(agency, number_account)
         self.__extra_limit = 300
 
+    @property
+    def label(self):
+        return self.__label
+
     def withdraw(self, value):
         balance_plus_limit = self.balance + self.__extra_limit
 
-        checked = self.validate_withdrawal_amount(value, balance_plus_limit)
+        checked = self._validate_withdrawal_amount(value, balance_plus_limit)
         if not checked[0]:
             return checked
 
@@ -111,20 +116,24 @@ class CheckingAccount(Account):
         return checked
 
 
-mock = CheckingAccount(*data_mock)
-print(mock)
+if __name__ == "__main__":
+    data_mock = ('0332', '09800-2')
 
-mock.deposit(1200)
-print(mock)
+    mock = CheckingAccount(*data_mock)
+    print(mock.label)
+    print(mock)
 
-# mock.withdraw(200)
-# print(mock)
+    mock.deposit(1200)
+    print(mock)
 
-print(mock.withdraw(1500))
-print(mock)
+    # mock.withdraw(200)
+    # print(mock)
 
-# print(mock.withdraw(100))
-# print(mock)
+    print(mock.withdraw(1500))
+    print(mock)
 
-print(mock.withdraw(10))
-print(mock)
+    # print(mock.withdraw(100))
+    # print(mock)
+
+    print(mock.withdraw(10))
+    print(mock)

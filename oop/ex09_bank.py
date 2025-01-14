@@ -48,7 +48,8 @@ class Bank:
 
         if not isinstance(name, str) or not name.isalpha():
             return  {**unsuccessful, "details": "A propriedade 'name' deve ser string"}
-        elif not isinstance(age, int) or not number_account.isdigit():
+
+        if not isinstance(age, int) or not number_account.isdigit():
             return  {**unsuccessful, "details": "Tipo inválido"}
 
         exists = self.__already_exists(number_account, type_account)

@@ -48,7 +48,6 @@ class Account(ABC):
             return CasesWhenCheckingBalance.ZERO_OR_LESS.value
         elif value > self.balance:
             return CasesWhenCheckingBalance.NO_BALANCE.value
-
         return CasesWhenCheckingBalance.SUCCESS.value
 
     def __str__(self):

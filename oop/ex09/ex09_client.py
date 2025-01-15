@@ -1,5 +1,5 @@
 from typing import Literal
-from ex09_account import SavingsAccount, CheckingAccount
+from oop.ex09.ex09_account import SavingsAccount, CheckingAccount
 
 
 class People:

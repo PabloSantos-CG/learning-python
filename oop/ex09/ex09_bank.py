@@ -11,7 +11,7 @@ Só será possível sacar se passar na autenticação do banco (descrita acima)
 Banco autentica por um método.
 """
 from itertools import zip_longest
-from ex09_client import Client, TypeUserAccount
+from oop.ex09.ex09_client import Client, TypeUserAccount
 
 class Bank:
     def __init__(self, name: str, agency: str):

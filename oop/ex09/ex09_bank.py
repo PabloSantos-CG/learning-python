@@ -1,17 +1,5 @@
-""""
-Criar classe Banco para AGREGAR classes de clientes e de contas (Agregação)
-
-Banco será responsável autenticar o cliente e as contas da seguinte maneira:
-    Banco tem contas e clientes (Agregação)
-    -> Checar se a agência é daquele banco
-    -> Checar se o cliente é daquele banco
-    -> Checar se a conta é daquele banco
-
-Só será possível sacar se passar na autenticação do banco (descrita acima)
-Banco autentica por um método.
-"""
 from itertools import zip_longest
-from oop.ex09.ex09_client import Client, TypeUserAccount
+from ex09_client import Client, TypeUserAccount
 
 class Bank:
     def __init__(self, name: str, agency: str):

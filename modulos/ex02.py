@@ -1,14 +1,3 @@
-"""
-Fulano pegou um empréstimo de 1.000
-para realizar o pagamento em 5 anos.
-A data em que ela pegou o empréstimo foi
-20/12/2020 e o vencimento de cada parcela
-é no dia 20 de cada mês
-- crie a data do empréstimo
-- crie a data do final do empréstimo
-- mostre todas as datas de vencimento e o valor de cada parcela
-"""
-
 def take_out_loan(loan_amount: float):
     from datetime import datetime
 

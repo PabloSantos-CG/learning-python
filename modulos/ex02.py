@@ -6,14 +6,14 @@ def take_out_loan(loan_amount: float):
 
     # loan_amount  = 1000
 
-    contract_duration = 5
-    total_installments = contract_duration * 12
+    contract_duration_in_years = 5
+    total_installments = contract_duration_in_years * 12
     installments_value = round((loan_amount/ total_installments), 2)
 
     prompt_ = "20/12/2020"
 
     initial_date = datetime.strptime(prompt_, "%d/%m/%Y")
-    end_date = initial_date.replace(year= initial_date.year + contract_duration)
+    end_date = initial_date.replace(year= initial_date.year + contract_duration_in_years)
 
     def date_formatter(date: datetime):
         if date.month == 12:

@@ -1,5 +1,5 @@
 import os
-from ex03_02 import size_formatter
+from modulos.ex03.ex03_02 import size_formatter
 
 
 path_main = os.path.join("\\Users", "aspir", "Desktop")

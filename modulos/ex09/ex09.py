@@ -60,20 +60,6 @@ for element in container.find_all(recursive=False):
         obj["vagas"].append(deepcopy(content))
 
 
-# [
-#     {
-#         "local": ...,
-#         "lista de vagas desse local": ...
-#     },
-#     {
-#         "local": ...,
-#         "lista de vagas desse local": ...
-#     },
-#     ...
-# ]
-# criar um bloco de notas e a cada local dar um espaçamento maior
-
-
 JOB_LIST = Path(__file__).parent / "data_jobs.txt"
 
 with open(JOB_LIST, "a", encoding="utf8") as file:
@@ -81,9 +67,13 @@ with open(JOB_LIST, "a", encoding="utf8") as file:
     if has_text:
         file.write("\n")
 
+    lines = []
     for data in data_job:
-        file.write(f'Local: {data["localizacao"]}\n')
+        lines.append(f'Local: {data["localizacao"]}\n')
         for job in data["vagas"]:
             for details in job:
-                file.write(f'-\t{details}\n')
-            file.write("\n")
+                if "PCD" in details.upper():
+                    break
+                lines.append(f'-\t{details}\n')
+            lines.append("\n")
+    file.writelines(lines)

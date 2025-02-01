@@ -76,7 +76,7 @@ PATH_TECH_JOBS = ORIGIN / "tech_data" / f"{file_name}.txt"
 
 data_tech_job: List[JobObject] = []
 
-with open(PATH_ALL_JOBS, "w+", encoding="utf8") as file:
+with open(PATH_ALL_JOBS, "a", encoding="utf8") as file:
     lines_all_jobs = []
 
     for data in data_job:
@@ -95,7 +95,7 @@ with open(PATH_ALL_JOBS, "w+", encoding="utf8") as file:
     file.writelines(lines_all_jobs)
 
 
-with open(PATH_TECH_JOBS, "w+", encoding="utf8") as file:
+with open(PATH_TECH_JOBS, "a", encoding="utf8") as file:
     lines_tech_jobs = []
 
     for obj_tech in data_tech_job:

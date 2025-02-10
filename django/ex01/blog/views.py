@@ -1,10 +1,8 @@
-# from django.shortcuts import render
-
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def blog(request):
-    return HttpResponse('Página blog')
+    return render(request, 'blog/index.html')
 
 def comment(request):
-    return HttpResponse('Comentário cativante')
+    return render(request, 'blog/comment.html')

@@ -8,6 +8,6 @@ def generate_password(length = 12):
 
     return ''.join(random.sample(characters, k=length))
 
-passwords = [ generate_password(22) for _ in range(10)]
+passwords = [ generate_password(64) for _ in range(1)]
 
 print(*passwords, sep="\n")
